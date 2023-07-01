@@ -1,0 +1,5 @@
+---
+- name: prerequisites
+  hosts: servers
+  roles:
+    - prerequisites

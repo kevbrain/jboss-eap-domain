@@ -1,2 +1,5 @@
 ---
 # tasks file for prerequisites
+
+- name: check if machines are available
+  ping:
