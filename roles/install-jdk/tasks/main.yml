@@ -12,7 +12,7 @@
     update_cache: true
 - name: check if java {{ jdk_version }} is installed
   yum:
-   name: "{{ jdk_version }}-devel"
+    name: "{{ jdk_version }}-devel"
     state: present
     update_cache: true
 - name: Set JAVA_HOME
