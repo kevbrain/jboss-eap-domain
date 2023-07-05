@@ -4,3 +4,4 @@
   roles:
     - prerequisites
     - install-jdk
+    - install-jboss-eap
