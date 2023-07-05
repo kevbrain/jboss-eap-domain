@@ -1,2 +1,23 @@
 ---
-# tasks file for install-jdk
+
+- name: check if zip is installed
+  yum:
+    name: zip
+    state: present
+    update_cache: true
+- name: check if unzip is installed
+  yum:
+    name: unzip
+    state: present
+    update_cache: true
+- name: check if java {{ jdk_version }} is installed
+  yum:
+   name: "{{ jdk_version }}-devel"
+    state: present
+    update_cache: true
+- name: Set JAVA_HOME
+  lineinfile:
+    dest: /etc/environment
+    state: present
+    regexp: '^JAVA_HOME'
+    line: 'JAVA_HOME=/usr/lib/jvm/{{ jdk_version }}'

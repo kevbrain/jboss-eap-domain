@@ -3,3 +3,4 @@
   hosts: servers
   roles:
     - prerequisites
+    - install-jdk
