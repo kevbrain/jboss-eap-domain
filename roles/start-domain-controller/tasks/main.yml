@@ -2,7 +2,7 @@
 
 - name: Set Instance facts
   set_fact:
-    instance_name: "{{ instance }}"
+    instance_name: "{{ instance.name }}"
     instance_mode: "{{ instance.mode | default('') if instance.mode is defined else jboss_eap_default_mode }}"
     instance_config: "{{ instance.config | default('') if instance.config is defined else jboss_eap_default_config }}"
     instance_java_opts: "{{ instance.java_opts | default('') if instance.java_opts is defined else '' }}"
