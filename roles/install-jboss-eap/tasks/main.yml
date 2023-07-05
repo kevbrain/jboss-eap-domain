@@ -17,7 +17,3 @@
     dest: "/tmp/{{ jboss_version }}.zip"
   when: not jboss_ressource.stat.exists
   
-    
-
-
-  
