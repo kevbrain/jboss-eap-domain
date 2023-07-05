@@ -31,7 +31,7 @@
     jboss_eap_runtime_conf_src_file: "{{ jboss_eap_bin_dir }}/{{ instance_mode }}.conf"
     jboss_eap_runtime_conf_file: "{{ jboss_eap_bin_dir }}/{{ jboss_eap_runtime_conf_filename }}"
     jboss_eap_service_src_file: "{{ (jboss_eap_base_version is version('7.0','<')) | ternary('jboss-as-'+instance_mode+'.sh','jboss-eap-rhel.sh') }}"
-    jboss_eap_initd_service_file: "/etc/init.d/{{ jboss_eap_service_file }}"
+    jboss_eap_initd_service_file: "/etc/rc.d/init.d/{{ jboss_eap_service_file }}"
     jboss_eap_pid_file: "{{ jboss_eap_service_data_dir }}/jboss-{{ instance_name }}/jboss-{{ instance_name }}.pid"
 
 - name: Check if {{ instance_name }} Directory Exists
