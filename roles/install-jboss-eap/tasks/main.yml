@@ -9,7 +9,7 @@
   stat:
     path: "/tmp/jboss-eap-{{ jboss_version }}.zip"
   register: jboss_ressource
-  when: not jboss_installed.stats.exists
+  when: not jboss_installed.stat.exists
 
 - name: download sources jboss {{ jboss_version }}
   get_url:
