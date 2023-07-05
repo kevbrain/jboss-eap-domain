@@ -23,6 +23,7 @@
     system: yes
     state: present
     gid: "{{ jboss_eap_group_gid | default('400') }}"
+  become: true
 
 - name: Create JBoss EAP User
   user:
@@ -32,6 +33,7 @@
     group: "{{ jboss_eap_group }}"
     home: "{{ jboss_eap_library_dest_dir }}"
     shell: "/bin/bash"
+  become: true
 
 - name: download sources jboss {{ jboss_version }}
   get_url:
