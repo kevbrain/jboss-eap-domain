@@ -1,3 +1,2 @@
 ---
-jboss_instances:
-  - name: domain
+instance.name: domain
