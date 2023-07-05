@@ -4,3 +4,7 @@ jboss_eap_standalone_backup_dir_name: domain
 jboss_eap_default_config: domain.xml
 jboss_eap_default_mode: domain
 jboss_eap_default_logging_timezone: America/New_York
+
+jboss_eap_service_conf_dir: "/etc/jboss"
+jboss_eap_service_log_dir: "/var/log"
+jboss_eap_service_data_dir: "/var/run"
