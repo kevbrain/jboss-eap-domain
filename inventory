@@ -25,13 +25,12 @@ jboss_eap_home_dir_name= jboss-eap-{{jboss_eap_base_version}}
 jboss_eap_base_directory_name= "jboss-eap-{{jboss_eap_base_version}}.0"
 jboss_eap_artifact_name= "{{ jboss_eap_base_directory_name }}.zip"
 jboss_eap_patch_artifact_name= jboss-eap-7.1.2-patch.zip
-jboss_eap_standalone_backup_dir_name= .domain
-jboss_eap_default_config= domain.xml
-jboss_eap_default_mode= domain
+
 jboss_eap_bind_default_web_address= 192.168.1.99
 jboss_eap_bind_default_management_address= 192.168.1.99
 jboss_eap_default_http_port= 8080
 jboss_eap_default_management_port= 9990
+jboss_eap_default_logging_timezone= America/New_York
 
 [amq-servers]
 

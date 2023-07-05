@@ -1,3 +1,5 @@
 ---
-instance:
-  - name: domain
+instance_name: domain
+jboss_eap_standalone_backup_dir_name: .domain
+jboss_eap_default_config: domain.xml
+jboss_eap_default_mode: domain

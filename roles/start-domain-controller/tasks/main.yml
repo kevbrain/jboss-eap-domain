@@ -2,17 +2,17 @@
 
 - name: Set Instance facts
   set_fact:
-    instance_name: "{{ instance.name }}"
-    instance_mode: "{{ instance.mode | default('') if instance.mode is defined else jboss_eap_default_mode }}"
-    instance_config: "{{ instance.config | default('') if instance.config is defined else jboss_eap_default_config }}"
-    instance_java_opts: "{{ instance.java_opts | default('') if instance.java_opts is defined else '' }}"
-    instance_logging_timezone: "{{ instance.logging_timezone | default('') if instance.logging_timezone is defined else jboss_eap_default_logging_timezone }}"
-    instance_http_port: "{{ instance.http_port | default('') if instance.http_port is defined else jboss_eap_default_http_port }}"
-    instance_management_port: "{{ instance.management_port | default('') if instance.management_port is defined else jboss_eap_default_management_port }}"
-    instance_bind_address: "{{ instance.bind_address | default('') if instance.bind_address is defined else jboss_eap_bind_default_web_address }}"
-    instance_bind_management_address: "{{ instance.bind_management_address | default('') if instance.bind_management_address is defined else jboss_eap_bind_default_management_address }}"
-    instance_port_offset: "{{ instance.port_offset | default('') if instance.port_offset is defined else '' }}"
-    instance_node_name: "{{ instance.node_name | default('') if instance.node_name is defined else instance.name }}"
+    instance_name: "{{ instance_name }}"
+    instance_mode: "{{ jboss_eap_default_mode }}"
+    instance_config: "{{ jboss_eap_default_config }}"
+    instance_java_opts: "{{ '' }}"
+    instance_logging_timezone: "{{  jboss_eap_default_logging_timezone }}"
+    instance_http_port: "{{ jboss_eap_default_http_port }}"
+    instance_management_port: "{{  jboss_eap_default_management_port }}"
+    instance_bind_address: "{{ jboss_eap_bind_default_web_address }}"
+    instance_bind_management_address: "{{ jboss_eap_bind_default_management_address }}"
+    instance_port_offset: "{{ '' }}"
+    instance_node_name: "{{ instance_name }}"
 
 - name: Calculate Port Values
   set_fact:
