@@ -5,3 +5,7 @@
     - prerequisites
     - install-jdk
     - install-jboss-eap
+- name: start-domain
+  hosts: jboss-domaincontroller
+  roles:
+    - start-domain-controller
