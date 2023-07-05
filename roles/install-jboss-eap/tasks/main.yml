@@ -17,11 +17,7 @@
     dest: "/tmp/{{ jboss_version }}.zip"
   when: not jboss_ressource.stat.exists
   
-- name: copy 
-  ansible.builtin.template:
-    src: test.xml
-    dest: /tmp/
-      
-become: true
+    
+
 
   
