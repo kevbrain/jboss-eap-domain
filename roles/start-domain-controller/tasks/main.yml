@@ -66,6 +66,9 @@
     group: "{{ jboss_eap_group }}"
     state: directory
     mode: 0755
+  become: true
+  become_method: su
+  become_user: root
 
 - name: Create JBoss EAP Service Log Directory
   file:
@@ -74,6 +77,9 @@
     group: "{{ jboss_eap_group }}"
     state: directory
     mode: 0755
+  become: true
+  become_method: su
+  become_user: root
 
 - name: Create JBoss EAP Service Runtime Data Directory
   file:
@@ -82,6 +88,9 @@
     group: "{{ jboss_eap_group }}"
     state: directory
     mode: 0755
+  become: true
+  become_method: su
+  become_user: root
 
 - name: Copy JBoss EAP Service Conf File
   template:
@@ -90,18 +99,25 @@
     src: jboss-as.conf.j2
     dest: "{{ jboss_eap_service_conf_file }}"
     mode: 0755
+  become: true
+  become_method: su
+  become_user: root
 
 - name: Copy JBoss Service Configuration File to Temp Directory
-  become: true
   copy:
     src: "{{ jboss_eap_runtime_conf_src_file }}"
     dest: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_runtime_conf_filename }}"
     remote_src: True
     owner: "{{ jboss_eap_user }}"
     group: "{{ jboss_eap_group }}"
+  become: true
+  become_method: su
+  become_user: root
 
 - name: Copy JBoss EAP Service File
   become: true
+  become_method: su
+  become_user: root
   copy:
     src: "{{ jboss_eap_bin_dir }}/init.d/{{ jboss_eap_service_src_file }}"
     dest: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_service_file }}"
@@ -111,6 +127,9 @@
     mode: 0755
 
 - name: Modify JBoss EAP Service File
+  become: true
+  become_method: su
+  become_user: root
   lineinfile:
     state: present
     path: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_service_file }}"
@@ -124,6 +143,9 @@
     - {regexp: "^  JBOSS_NAME", line: "  JBOSS_NAME='jboss-{{ instance_name }}'"}
 
 - name: Add RUN_CONF to EAP Service File
+  become: true
+  become_method: su
+  become_user: root
   lineinfile:
     state: present
     path: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_service_file }}"
@@ -131,6 +153,9 @@
     insertbefore: "^# Source function library."
 
 - name: Inject RUN_CONF to Startup in EAP Service File
+  become: true
+  become_method: su
+  become_user: root
   replace:
     path: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_service_file }}"
     regexp: "LAUNCH_JBOSS_IN_BACKGROUND=1"
@@ -138,6 +163,9 @@
 
 #TODO: Node Name
 - name: Set Java Options Facts
+  become: true
+  become_method: su
+  become_user: root
   set_fact:
     instance_java_opts: "{{ (instance_java_opts + ' ' + item) | trim }}"
   with_items:
@@ -149,6 +177,9 @@
     - "{{ '-Djboss.server.base.dir=' + instance_name }}"
 
 - name: Set Java Options
+  become: true
+  become_method: su
+  become_user: root
   lineinfile:
     dest: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_runtime_conf_filename }}"
     line: "JAVA_OPTS=\"$JAVA_OPTS {{ instance_java_opts }}\""
@@ -156,6 +187,8 @@
 
 - name: Copy JBoss Service Configuration File
   become: true
+  become_method: su
+  become_user: root
   copy:
     src: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_runtime_conf_filename }}"
     dest: "{{ jboss_eap_runtime_conf_file }}"
@@ -168,6 +201,8 @@
 
 - name: Copy JBoss EAP Service File
   become: true
+  become_method: su
+  become_user: root
   copy:
     src: "{{ jboss_instance_mktemp.path }}/{{ jboss_eap_service_file }}"
     dest: "{{ jboss_eap_initd_service_file }}"
