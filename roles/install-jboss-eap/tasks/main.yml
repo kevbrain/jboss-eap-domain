@@ -41,8 +41,8 @@
 
 - name: download sources jboss {{ jboss_version }}
   get_url:
-    url: "https://access.cdn.redhat.com/content/origin/files/sha256/5f/5f1f0b7a389dedcd6f91ea3c8c6c9b723e9e8609bdf5720d4088e5469d46ad3a/jboss-eap-7.4.0.zip?_auth_=1688570676_2d6f6b9da2695dc972210a62ae9f1f54"
-    dest: "/tmp/{{ jboss_version }}.zip"
+    url: "https://access.cdn.redhat.com/content/origin/files/sha256/5f/5f1f0b7a389dedcd6f91ea3c8c6c9b723e9e8609bdf5720d4088e5469d46ad3a/jboss-eap-7.4.0.zip?_auth_=1688574472_40fbc0b552a397a67a3af850c33d1b2a"
+    dest: "{{ jboss_eap_artifact_dl_dest }}"
   when: not jboss_eap_exists.stat.exists
 
 - name: Set JBoss EAP Service Directories Facts
